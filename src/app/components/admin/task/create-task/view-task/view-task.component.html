@@ -1,0 +1,75 @@
+<section>
+    <div class="container mb-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="d-flex justify-content-between pt-5">
+            <h4 class="header">User Details</h4>
+            <button class="btn btn-dark " [routerLink]="['/admin', { outlets: { sub_menu: ['create-task'] } }]">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8 p-0">
+          <div class="col-md-12 card  my-5">
+            <div class="table-header p-2">
+              <h6 class="fw-bold  m-3">User Details</h6>
+            </div>
+            <form>
+              <div class="row m-0 mt-3 p-3">
+                <div class="col-md-4 d-flex">
+                  <label for="user_name" class="fw-bold">Name:</label>
+                  <p type="text" id="user_name" for="user_name">
+                    {{ allCustmerList.customer_name }}
+                  </p>
+                </div>
+                <div class="col-md-4 d-flex">
+                  <label for="full_name" class="fw-bold">Email: </label>
+                  <p type="text" id="full_name" for="full_name">
+                    {{ allCustmerList.mobile_number }}
+                  </p>
+                </div>
+                <div class="col-md-4 d-flex">
+                  <label for="full_name" class="fw-bold">Address:</label>
+                  <p type="text" id="full_name" for="full_name">
+                    {{ allCustmerList.address }}
+                  </p>
+                </div>
+               
+                <div class="col-md-4 d-flex">
+                  <label for="profession" class="fw-bold">End-date:</label>
+                  <p type="text" id="profession" for="profession">
+                    {{ allCustmerList.due_date |date }}
+                  </p>
+                </div>
+                
+                <div class="col-md-4 d-flex">
+                  <label for="region" class="fw-bold">payment-status :</label>
+                  <p type="text" id="region" for="region">
+                    {{ allCustmerList.payment_status|titlecase  }}
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-10 p-0">
+          <div class="col-md-10 card p-0 my-5 overflow-auto">
+            <div class="table-header p-2">
+              <h6 class="fw-bold m-3">Other Details</h6>
+              
+
+            </div>
+            <form>
+              <div class=" ">
+               
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

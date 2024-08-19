@@ -1,0 +1,125 @@
+<section class="bg-theme-admin m-0 ">
+    <div class="row m-0">
+        <div class="col-md-12 d-flex justify-content-center">
+            <h4 class="header  text-dark pt-4">{{isEdit?'Update':'Add'}} aadhar</h4>
+        </div>
+    </div>
+    <div class="row justify-content-center  m-0">
+        <div class="col-md-10 mb-3">
+            <form [formGroup]="form">
+                <div class="row">
+                <div class="form-group col-md-6 ">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name
+                    " formControlName="name"
+                        [ngClass]="{'is-invalid': control['name'].invalid && (control['name'].dirty || control['name'].touched)}">
+                        <span
+                            *ngIf="control['name'].invalid &&(control['name'].dirty || control['name'].touched)"
+                            class="text-danger p-1"><small>name is required.</small></span>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="mobile_number">Mobile</label>
+                    <input type="number" class="form-control" id="mobile_number
+                    " formControlName="mobile_number"
+                        [ngClass]="{'is-invalid': control['mobile_number'].invalid && (control['mobile_number'].dirty || control['mobile_number'].touched)}">
+                        <span class="inputboxcolor" *ngIf="control['mobile_number'].invalid
+                        && (control['mobile_number'].dirty || 
+                        control['mobile_number'].touched)">
+                  <div class="text-danger p-1"  *ngIf="control['mobile_number'].errors?.['required']">
+                    <small>Mobile Number is required</small>
+                  </div>
+                  <div  class="text-danger p-1" *ngIf="control['mobile_number'].errors?.['pattern']">
+                    <small>Mobile Number only 10 digit</small>
+                  </div>
+                 </span> 
+                </div>
+                </div>
+              <div class="row">
+                <div class="form-group col-md-6 ">
+                    <label for="enrollment_number">Enrollment Number</label>
+                    <input type="text" class="form-control" id="enrollment_number
+                    " formControlName="enrollment_number"
+                        [ngClass]="{'is-invalid': control['enrollment_number'].invalid && (control['enrollment_number'].dirty || control['enrollment_number'].touched)}">
+                        <span
+                            *ngIf="control['enrollment_number'].invalid &&(control['enrollment_number'].dirty || control['enrollment_number'].touched)"
+                            class="text-danger p-1"><small>Enrollment-number is required.</small></span>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="enollment_time">Enrollment Time</label>
+                    <input type="time" class="form-control" id="enollment_time
+                    " formControlName="enollment_time"
+                        [ngClass]="{'is-invalid': control['enollment_time'].invalid && (control['enollment_time'].dirty || control['enollment_time'].touched)}">
+                        <span
+                            *ngIf="control['enollment_time'].invalid &&(control['enollment_time'].dirty || control['enollment_time'].touched)"
+                            class="text-danger p-1"><small>Enollmen-time is required.</small></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6 ">
+                    <label for="service_id">Service</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="service_id"  [ngClass]="{'is-invalid': control['service_id'].invalid && (control['service_id'].dirty || control['service_id'].touched)}">
+                        <option  value="" disabled>Select Service</option>
+                        <option selected [value]='item.service_id' *ngFor="let item of allServiceList">{{item.services}}</option>  
+                      </select> 
+                        <span
+                            *ngIf="control['service_id'].invalid &&(control['service_id'].dirty || control['service_id'].touched)"
+                            class="text-danger p-1"><small>Service is required.</small></span>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="document_type_id">Document Type</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="document_type_id"  [ngClass]="{'is-invalid': control['document_type_id'].invalid && (control['document_type_id'].dirty || control['document_type_id'].touched)}">
+                        <option  value="" disabled >Select Document-type</option>
+                        <option selected [value]='item.document_type_id' *ngFor="let item of allDocumentTypeList">{{item.document_type}}</option>  
+                      </select> 
+                        <span
+                            *ngIf="control['document_type_id'].invalid &&(control['document_type_id'].dirty || control['document_type_id'].touched)"
+                            class="text-danger p-1"><small>Document Type is required.</small></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6 ">
+                    <label for="verification_status">Verification Status</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="verification_status"  [ngClass]="{'is-invalid': control['verification_status'].invalid && (control['verification_status'].dirty || control['verification_status'].touched)}">
+                        <option  value="" disabled>Select Verification-status</option>
+                        <option  value='open'>Open</option>  
+                        <option  value='close'>Close</option>
+                        <option  value='Inprocess'>Inprocess</option> 
+                      </select> 
+                       <span
+                            *ngIf="control['verification_status'].invalid &&(control['verification_status'].dirty || control['verification_status'].touched)"
+                            class="text-danger p-1"><small>Verification Status is required.</small></span>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="payment_mode">Payment Mode</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="payment_mode"  [ngClass]="{'is-invalid': control['payment_mode'].invalid && (control['payment_mode'].dirty || control['payment_mode'].touched)}">
+                        <option  value="" disabled>Select Payment-mode</option>
+                        <option  value='Paid'>Paid</option> 
+                        <option  value='Unpaid'>Unpaid</option>  
+                      </select> 
+                        <span
+                            *ngIf="control['payment_mode'].invalid &&(control['payment_mode'].dirty || control['payment_mode'].touched)"
+                            class="text-danger p-1"><small>Payment Mode is required.</small></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6 ">
+                    <label for="amount">Amount</label>
+                    <input type="text" class="form-control" id="amount
+                    " formControlName="amount"
+                        [ngClass]="{'is-invalid': control['amount'].invalid && (control['amount'].dirty || control['amount'].touched)}">
+                        <span
+                            *ngIf="control['amount'].invalid &&(control['amount'].dirty || control['amount'].touched)"
+                            class="text-danger p-1"><small>Amount is required.</small></span>
+                </div>
+              </div>
+                <div class="d-flex justify-content-center  gap-3 p-3">
+                    <button class="btn btn-dark  " (click)="onSubmit()">{{isEdit?'Update':'Add'}}</button>
+                    <button class="btn btn-light " (click)="closeDialog()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+

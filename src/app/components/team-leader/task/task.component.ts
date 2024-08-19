@@ -1,0 +1,86 @@
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
+import { AdminService } from '../../admin/admin.service';
+import { ToastrService } from 'ngx-toastr';
+import { AddUpdateTaskComponent } from './add-update-task/add-update-task.component';
+
+@Component({
+  selector: 'app-task',
+  templateUrl: './task.component.html',
+  styleUrls: ['./task.component.scss']
+})
+export class TaskComponent {
+  allTaskList:Array<any>=[];
+  page = 1;
+  perPage = 50;
+  total = 0;
+  constructor(  private dialog: MatDialog,
+    private _adminService: AdminService,
+    private _tosterService: ToastrService,){
+   
+  }
+  ngOnInit(): void {
+   // this.getTaskList();
+  }
+  openDialog(data?: any) {
+    const dialogRef = this.dialog.open(AddUpdateTaskComponent, {
+      data: data,
+      width: '744px',
+      height: 'auto'
+    });
+
+    dialogRef.afterClosed().subscribe((message: string) => {
+      if (message == 'create' || message == 'update') {
+        this.getTaskList();
+      } else {
+        console.log('nothing happen');
+      }
+    });
+  }
+  getTaskList() {
+    this._adminService.getTask(this.page,this.perPage).subscribe({
+      next: (res: any) => {
+        if (res.data.length > 0) {
+          this.allTaskList = res.data;
+          if (res.data.length > 0) {
+            this.allTaskList = res.data
+            this.total = res.pagination.total
+          }
+        } else {
+          this.allTaskList = []
+          
+        }
+      }
+    })
+  }
+  changeEvent(event: any, id: any) {
+    let status = 0;
+    if (event.checked) {
+      status = 1;
+    }
+    this._adminService.designationEnableDisable(id, status).subscribe({
+      next: (res: any) => {
+        if (res.status === 200) {
+          this._tosterService.success(res.message);
+          this.getTaskList();
+        } else {
+          this._tosterService.warning(res.message);
+        }
+      },
+      error: (error: any) => {
+        if (error.status == 422) {
+          this._tosterService.warning(error.message);
+        } else {
+          this._tosterService.error("Internal server error");
+        }
+      },
+    })
+  }
+  onPageChange(event: PageEvent): void {
+    this.page = event.pageIndex + 1;
+    this.perPage = event.pageSize;
+    this.getTaskList();
+
+}
+}

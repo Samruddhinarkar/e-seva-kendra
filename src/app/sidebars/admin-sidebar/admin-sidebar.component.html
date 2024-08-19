@@ -1,0 +1,86 @@
+<div class="container-fuild">
+    <div class="row h-100   m-0">
+      <div class="side-bar">
+        <div class="logo d-flex"><img src="../../../assets/images/removebackground.png" width="60px" alt="SurveyBrewery">
+          <h6 class="fw-bold mt-4 ms-2">E Seva kendra</h6>
+        </div>
+        <div class="menu mt-3">
+          <ul class="nav">
+            <li class="nav-item py-1 fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: ['admin']}}]"><span><mat-icon>dashboard</mat-icon></span>Dashboard</li>
+            <!-- <li class="nav-item">Masters</li> -->
+            <li class=" nav-item py-0 accordion-header" id="headingOne"><span><mat-icon>dashboard</mat-icon></span>
+              <button class="accordion-button p-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="false" aria-controls="collapseOne">
+                Masters
+              </button>
+            </li>
+            <ul id="collapseOne" class="accordion-collapse collapse ">
+              <li class="nav-item fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: 'designation' } }]"><span></span>Designation</li>
+               <li class="nav-item fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: 'user-role' } }]"><span></span> Users Role</li>
+              <li class="nav-item fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: 'status' } }]"><span></span>Status</li>
+              <li class="nav-item fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: 'priorities'}}]"><span></span>Priorities </li>
+
+              </ul>
+              <li class=" nav-item py-1 accordion-header" id="headingOne"><span><mat-icon>dashboard</mat-icon></span>
+            <button class="accordion-button p-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+              aria-expanded="false" aria-controls="collapseOne">
+              Users
+            </button>
+          </li>
+          <ul id="collapseTwo" class="accordion-collapse collapse ">
+            <li class="nav-item fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: 'create-user' } }]"><span></span>Create</li>
+
+              <li class="nav-item fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: 'assign-role' } }]"><span></span>Assign Role</li>
+            </ul>
+            <li class=" nav-item py-1 accordion-header" id="headingOne"><span><mat-icon>dashboard</mat-icon></span>
+          <button class="accordion-button p-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+            aria-expanded="false" aria-controls="collapseOne">
+            Services
+          </button>
+        </li>
+        <ul id="collapseThree" class="accordion-collapse collapse ">
+          <li class="nav-item fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: 'services' } }]"><span></span>Create</li>
+
+          <li class="nav-item fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: 'work-Details' } }]"><span></span>Work Details</li>
+          </ul> 
+          
+          <li class=" nav-item py-1 accordion-header" id="headingOne"><span><mat-icon>dashboard</mat-icon></span>
+        <button class="accordion-button p-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+          aria-expanded="false" aria-controls="collapseOne">
+          Document
+        </button>
+      </li>
+      <ul id="collapseFour" class="accordion-collapse collapse ">
+        <li class="nav-item" [routerLink]="['/admin', { outlets: { sub_menu: 'document-type' } }]"><span></span>Create</li>
+        </ul> 
+
+        <li class=" nav-item accordion-header py-1 fw-bold" id="headingOne"><span><mat-icon>dashboard</mat-icon></span>
+      <button class="accordion-button p-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
+        aria-expanded="false" aria-controls="collapseOne">
+        Task
+      </button>
+    </li>
+    <ul id="collapseFive" class="accordion-collapse collapse ">
+      <li class="nav-item fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: 'create-task' } }]"><span></span>Create</li>
+            
+      </ul> 
+
+      <li class=" nav-item accordion-header py-1 fw-bold" id="headingOne"><span><mat-icon>dashboard</mat-icon></span>
+    <button class="accordion-button  p-0 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
+      aria-expanded="false" aria-controls="collapseOne">
+      Adhar
+    </button>
+  </li>
+  <ul id="collapseSix" class="accordion-collapse collapse ">
+    <li class="nav-item  fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: 'adhar' } }]"><span></span>Create</li>
+          
+    </ul> 
+            <li class="nav-item  py-1 fw-bold" routerLink=""><span><mat-icon>dashboard</mat-icon></span>Logout</li>
+          </ul>
+        </div>
+      </div>
+      <div class="body ">
+        <router-outlet name="sub_menu"></router-outlet>
+      </div>
+    </div>
+  </div>

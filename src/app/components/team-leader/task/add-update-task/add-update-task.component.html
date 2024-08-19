@@ -1,0 +1,541 @@
+<section class="bg-theme-admin m-0">
+  <div class="row m-0">
+    <div class="col-md-12 d-flex justify-content-center">
+      <h4 class="header text-dark pt-4">
+        {{ isEdit ? "Update" : "Add" }} task
+      </h4>
+    </div>
+  </div>
+  <div class="row justify-content-center m-0">
+    <div class="col-md-10 mb-3">
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="customer_name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="customer_name "
+              formControlName="customer_name"
+              [ngClass]="{
+                'is-invalid':
+                  control['customer_name'].invalid &&
+                  (control['customer_name'].dirty ||
+                    control['customer_name'].touched)}"/>
+                    <span
+                    *ngIf="
+                      control['customer_name'].invalid &&
+                      (control['customer_name'].dirty ||
+                        control['customer_name'].touched)
+                    "
+                    class="text-danger p-1"
+                    ><small>Name is required.</small></span
+                  >
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="customer_name">Mobile</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="mobile_number
+                        "
+                  formControlName="mobile_number"
+                  [ngClass]="{
+                    'is-invalid':
+                      control['mobile_number'].invalid &&
+                      (control['mobile_number'].dirty ||
+                        control['mobile_number'].touched)
+                  }"
+                />
+                <span *ngIf="
+                    control['mobile_number'].invalid &&
+                    (control['mobile_number'].dirty ||
+                      control['mobile_number'].touched)
+                  " class="text-danger p-1"><small>Mobile is required.</small></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="address">Address</label>
+          <textarea
+            type="text"
+            class="form-control"
+            id="address"
+            formControlName="address"
+            [ngClass]="{
+              'is-invalid':
+                control['address'].invalid &&
+                (control['address'].dirty || control['address'].touched)
+            }"
+          >
+          </textarea>
+          <span
+            *ngIf="
+              control['address'].invalid &&
+              (control['address'].dirty || control['address'].touched)
+            "
+            class="text-danger p-1"
+            ><small>Address is required.</small></span
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="service_id">Service</label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            formControlName="service_id"
+            [ngClass]="{'is-invalid': control['service_id'].invalid && (control['service_id'].dirty || control['service_id'].touched)}">
+            <option  value ="" disabled selected>Select service</option>
+            <option
+              selected
+              [value]="item.service_id"
+              *ngFor="let item of allserviceList" >
+              {{ item.services }}
+            </option>
+          </select>
+          <span *ngIf="  control['service_id'].invalid && (control['service_id'].dirty || control['service_id'].touched)"
+           class="text-danger p-1"><small>service is required.</small></span>
+        </div>
+        <div class="col-md-6">
+                <label for="work_details_id">Work-details</label>
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  formControlName="work_details_id"
+                  [ngClass]="{
+                    'is-invalid':
+                      control['work_details_id'].invalid &&
+                      (control['work_details_id'].dirty ||
+                        control['work_details_id'].touched)
+                  }"
+                >
+                  <option value="" selected>Select work-details</option>
+                  <option
+                    selected
+                    [value]="item.work_details_id"
+                    *ngFor="let item of allWorkDetailsList"
+                  >
+                    {{ item.work_details }}
+                  </option>
+                </select>
+                <span
+                  *ngIf="
+                    control['work_details_id'].invalid &&
+                    (control['work_details_id'].dirty ||
+                      control['work_details_id'].touched)
+                  "
+                  class="text-danger p-1"
+                  ><small>Work Description is required.</small></span
+                >
+        </div>
+      </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+                <label for="assigned_to">Assigned-to</label>
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  formControlName="assigned_to"
+                  [ngClass]="{
+                    'is-invalid':
+                      control['assigned_to'].invalid &&
+                      (control['assigned_to'].dirty ||
+                        control['assigned_to'].touched)
+                  }"
+                >
+                  <option value="" disabled>Select User Name</option>
+                  <option
+                    selected
+                    [value]="item.assigned_to"
+                    *ngFor="let item of allAssignedToList"
+                  >
+                    {{ item.user_name }}
+                  </option>
+                </select>
+                <span
+                  *ngIf="
+                    control['assigned_to'].invalid &&
+                    (control['assigned_to'].dirty || control['assigned_to'].touched)
+                  "
+                  class="text-danger p-1"
+                  ><small>Name is required.</small></span
+                >
+            
+
+        </div>
+        <div class="col-md-6">
+                <label for="document_type_id">Document-type</label>
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  formControlName="document_type_id"
+                  [ngClass]="{
+                    'is-invalid':
+                      control['document_type_id'].invalid &&
+                      (control['document_type_id'].dirty ||
+                        control['document_type_id'].touched)
+                  }"
+                >
+                  <option value="" disabled>Select Document-type</option>
+                  <option
+                    
+                    [value]="item.document_type_id"
+                    *ngFor="let item of allDocumentTypeList"
+                  >
+                    {{ item.document_type }}
+                  </option>
+                </select>
+                <span
+                  *ngIf="
+                    control['document_type_id'].invalid &&
+                    (control['document_type_id'].dirty ||
+                      control['document_type_id'].touched)
+                  "
+                  class="text-danger p-1"
+                  ><small>Document-type is required.</small></span
+                >
+        </div>
+    </div>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+            <label for="due_date">End date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="due_date
+                    "
+              formControlName="due_date"
+              [ngClass]="{
+                'is-invalid':
+                  control['due_date'].invalid &&
+                  (control['due_date'].dirty || control['due_date'].touched)
+              }"
+            />
+            <span
+              *ngIf="
+                control['due_date'].invalid &&
+                (control['due_date'].dirty || control['due_date'].touched)
+              "
+              class="text-danger p-1"
+              ><small>End date is required.</small></span
+            >
+
+    </div>
+    <div class="col-md-6">
+            <label for="payment_status">Payment Status</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              formControlName="payment_status"
+              [ngClass]="{
+                'is-invalid':
+                  control['payment_status'].invalid &&
+                  (control['payment_status'].dirty ||
+                    control['payment_status'].touched)
+              }"
+            >
+              <option value="" selected>Select Payment Mode</option>
+              <option>Paid</option>
+              <option>Unpaid</option>
+            </select>
+            <span
+              *ngIf="
+                control['payment_status'].invalid &&
+                (control['payment_status'].dirty ||
+                  control['payment_status'].touched)
+              "
+              class="text-danger p-1"
+              ><small>Payment Status is required.</small></span
+            >
+    
+
+    </div>
+
+  </div>
+  <div class="d-flex justify-content-center gap-3 p-3">
+    <button class="btn btn-dark" (click)="onSubmit()">
+      {{ isEdit ? "Update" : "Add" }}
+    </button>
+    <button class="btn btn-light" (click)="closeDialog()">Cancel</button>
+  </div>
+
+
+ </form>   
+</div>
+  </div>
+  <!-- <div class="row justify-content-center m-0">
+    <div class="col-md-10 mb-3">
+      <form [formGroup]="form">
+        <div class="d-flex justify-content-evenly">
+          <div class="form-group col-md-6">
+            <label for="customer_name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="customer_name
+                    "
+              formControlName="customer_name"
+              [ngClass]="{
+                'is-invalid':
+                  control['customer_name'].invalid &&
+                  (control['customer_name'].dirty ||
+                    control['customer_name'].touched)
+              }"
+            />
+            <span
+              *ngIf="
+                control['customer_name'].invalid &&
+                (control['customer_name'].dirty ||
+                  control['customer_name'].touched)
+              "
+              class="text-danger p-1"
+              ><small>Name is required.</small></span
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="mobile_number">Mobile</label>
+            <input
+              type="text"
+              class="form-control"
+              id="mobile_number
+                    "
+              formControlName="mobile_number"
+              [ngClass]="{
+                'is-invalid':
+                  control['mobile_number'].invalid &&
+                  (control['mobile_number'].dirty ||
+                    control['mobile_number'].touched)
+              }"
+            />
+            <span
+              *ngIf="
+                control['mobile_number'].invalid &&
+                (control['mobile_number'].dirty ||
+                  control['mobile_number'].touched)
+              "
+              class="text-danger p-1"
+              ><small>Mobile is required.</small></span
+            >
+          </div>
+        </div>
+
+        <div class="form-group col-md-11 ms-3">
+          <label for="address">Address</label>
+          <textarea
+            type="text"
+            class="form-control"
+            id="address
+                    "
+            formControlName="address"
+            [ngClass]="{
+              'is-invalid':
+                control['address'].invalid &&
+                (control['address'].dirty || control['address'].touched)
+            }"
+          >
+                        <span
+                            *ngIf="control['address'].invalid &&(control['address'].dirty || control['address'].touched)"
+                            class="text-danger p-1"><small>Address is required.</small></span>
+                        </textarea
+          >
+        </div>
+        <div class="d-flex justify-content-evenly">
+          <div class="form-group col-md-5">
+            <label for="service_id">Service</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              formControlName="service_id"
+              [ngClass]="{
+                'is-invalid':
+                  control['user_id'].invalid &&
+                  (control['user_id'].dirty || control['user_id'].touched)
+              }"
+            >
+              <option value="" selected>Select User Name</option>
+              <option
+                selected
+                [value]="item.service_id"
+                *ngFor="let item of allserviceList"
+              >
+                {{ item.user_name }}
+              </option>
+            </select>
+            <span
+              *ngIf="
+                control['service_id'].invalid &&
+                (control['service_id'].dirty || control['service_id'].touched)
+              "
+              class="text-danger p-1"
+              ><small>service is required.</small></span
+            >
+          </div>
+
+          <div class="form-group col-md-5">
+            <label for="work_details_id">Description</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              formControlName="work_details_id"
+              [ngClass]="{
+                'is-invalid':
+                  control['work_details_id'].invalid &&
+                  (control['work_details_id'].dirty ||
+                    control['work_details_id'].touched)
+              }"
+            >
+              <option value="" selected>Select User Name</option>
+              <option
+                selected
+                [value]="item.work_details_id"
+                *ngFor="let item of allWorkDetailsList"
+              >
+                {{ item.user_name }}
+              </option>
+            </select>
+            <span
+              *ngIf="
+                control['work_details_id'].invalid &&
+                (control['work_details_id'].dirty ||
+                  control['work_details_id'].touched)
+              "
+              class="text-danger p-1"
+              ><small>User name is required.</small></span
+            >
+          </div>
+        </div>
+        <div class="d-flex justify-content-evenly">
+          <div class="form-group col-md-5">
+            <label for="document_type_id">Document-type</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              formControlName="document_type_id"
+              [ngClass]="{
+                'is-invalid':
+                  control['document_type_id'].invalid &&
+                  (control['document_type_id'].dirty ||
+                    control['document_type_id'].touched)
+              }"
+            >
+              <option value="" selected>Select User Name</option>
+              <option
+                selected
+                [value]="item.document_type_id"
+                *ngFor="let item of allDocumentTypeList"
+              >
+                {{ item.user_name }}
+              </option>
+            </select>
+            <span
+              *ngIf="
+                control['document_type_id'].invalid &&
+                (control['document_type_id'].dirty ||
+                  control['document_type_id'].touched)
+              "
+              class="text-danger p-1"
+              ><small>User name is required.</small></span
+            >
+          </div>
+          <div class="form-group col-md-5">
+            <label for="assigned_to">Assigned-to</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              formControlName="assigned_to"
+              [ngClass]="{
+                'is-invalid':
+                  control['assigned_to'].invalid &&
+                  (control['assigned_to'].dirty ||
+                    control['assigned_to'].touched)
+              }"
+            >
+              <option value="" selected>Select User Name</option>
+              <option
+                selected
+                [value]="item.assigned_to"
+                *ngFor="let item of allAssignedToList"
+              >
+                {{ item.user_name }}
+              </option>
+            </select>
+            <span
+              *ngIf="
+                control['assigned_to'].invalid &&
+                (control['assigned_to'].dirty || control['assigned_to'].touched)
+              "
+              class="text-danger p-1"
+              ><small>User name is required.</small></span
+            >
+          </div>
+        </div>
+        <div class="d-flex d-flex justify-content-evenly">
+          <div class="form-group col-md-5">
+            <label for="due_date">Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="due_date
+                    "
+              formControlName="due_date"
+              [ngClass]="{
+                'is-invalid':
+                  control['due_date'].invalid &&
+                  (control['due_date'].dirty || control['due_date'].touched)
+              }"
+            />
+            <span
+              *ngIf="
+                control['due_date'].invalid &&
+                (control['due_date'].dirty || control['due_date'].touched)
+              "
+              class="text-danger p-1"
+              ><small>Name is required.</small></span
+            >
+          </div>
+
+          <div class="form-group col-md-5">
+            <label for="payment_status">Payment Status</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              formControlName="payment_status"
+              [ngClass]="{
+                'is-invalid':
+                  control['payment_status'].invalid &&
+                  (control['payment_status'].dirty ||
+                    control['payment_status'].touched)
+              }"
+            >
+              <option value="" selected>Select Payment status</option>
+              <option>Paid</option>
+              <option>Unpaid</option>
+            </select>
+            <span
+              *ngIf="
+                control['payment_status'].invalid &&
+                (control['payment_status'].dirty ||
+                  control['payment_status'].touched)
+              "
+              class="text-danger p-1"
+              ><small>User name is required.</small></span
+            >
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center gap-3 p-3">
+          <button class="btn btn-dark" (click)="onSubmit()">
+            {{ isEdit ? "Update" : "Add" }}
+          </button>
+          <button class="btn btn-light" (click)="closeDialog()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div> -->
+</section>

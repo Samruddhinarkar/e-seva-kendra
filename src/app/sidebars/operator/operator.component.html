@@ -1,0 +1,33 @@
+<div class="container-fuild">
+    <div class="row h-100   m-0">
+      <div class="side-bar">
+        <div class="logo d-flex">
+          <img src="../../../assets/images/removebackground.png" width="70px" alt="SurveyBrewery"><h6 class="fw-bold mt-2 ms-2">E Seva kendra</h6>
+        </div>
+        <div class="menu">
+          <ul class="nav">
+            <li class="nav-item fw-bold" [routerLink]="['/admin', { outlets: { sub_menu: ['admin']}}]"><span><mat-icon>dashboard</mat-icon></span>Dashboard</li>
+            <!-- <li class="nav-item">Masters</li> -->
+        
+              <li class=" nav-item accordion-header" id="headingOne"><span><mat-icon>dashboard</mat-icon>   </span>
+            <button class="accordion-button fw-bold p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+              aria-expanded="false" aria-controls="collapseOne">
+              Adhar
+            </button>
+          </li>
+          <ul id="collapseTwo" class="accordion-collapse collapse ">
+              <li class="nav-item fw-bold" [routerLink]="['/operator', { outlets: { operator_menu: 'aadhar'} }]"><span><mat-icon>dashboard</mat-icon></span>Create</li>
+                  
+            </ul>
+            <li class="nav-item fw-bold" [routerLink]="['/operator', { outlets: { operator_menu:'aadhar'} }]"><span><mat-icon>dashboard</mat-icon></span>Reports</li>
+          
+            <li class="nav-item fw-bold" routerLink=""><span><mat-icon>dashboard</mat-icon></span>Logout</li>
+                  
+          </ul>
+        </div>
+      </div>
+      <div class="body ">
+        <router-outlet name="sub_menu"></router-outlet>
+      </div>
+    </div>
+  </div>

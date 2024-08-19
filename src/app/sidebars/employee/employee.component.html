@@ -1,0 +1,31 @@
+<div class="container-fuild">
+    <div class="row h-100   m-0">
+      <div class="side-bar">
+        <div class="logo d-flex">
+          <img src="../../../assets/images/removebackground.png" width="70px" alt="e-sevs-kendra"><h6 class="fw-bold mt-4 ms-2">E Seva kendra</h6>
+        </div>
+        <div class="menu">
+          <ul class="nav">
+            <li class="nav-item fw-bold" [routerLink]="['/employee', { outlets:{ employee_menu:['employee-dashboard']}}]"><span><mat-icon>dashboard</mat-icon></span>Dashboard</li>
+            <!-- <li class="nav-item">Masters</li> -->
+        
+              <li class=" nav-item accordion-header" id="headingOne"><span><mat-icon>dashboard</mat-icon></span>
+            <button class="accordion-button fw-bold py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+              aria-expanded="false" aria-controls="collapseOne">
+              Task
+            </button>
+          </li>
+          <ul id="collapseTwo" class="accordion-collapse collapse ">
+              <li class="nav-item fw-bold"  [routerLink]="['/employee', { outlets: { employee_menu: 'task-list' }}]"><span></span>List</li>
+            </ul>
+            <li class="nav-item fw-bold" [routerLink]="['/employee', { outlets: { employee_menu: 'report' } }]"><span> <mat-icon>dashboard</mat-icon></span>Reports</li>
+            <li class="nav-item fw-bold" routerLink=""><span><mat-icon>dashboard</mat-icon></span>Logout</li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="body ">
+        <router-outlet name="employee_menu"></router-outlet>
+      </div>
+    </div>
+  </div>

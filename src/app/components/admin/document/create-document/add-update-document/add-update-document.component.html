@@ -1,0 +1,28 @@
+<section class="bg-theme-admin m-0 ">
+    <div class="row m-0">
+        <div class="col-md-12 d-flex justify-content-center">
+            <h4 class="header  text-dark pt-4">{{isEdit?'Update':'Add'}} document-type</h4>
+        </div>
+    </div>
+    <div class="row justify-content-center  m-0">
+        <div class="col-md-10 mb-3">
+            <form [formGroup]="form">
+                <div class="form-group col-md-12 ">
+                    <label for="document_type">Document-Type</label>
+                    <input type="text" class="form-control" id="document_type
+                    " formControlName="document_type"
+                        [ngClass]="{'is-invalid': control['document_type'].invalid && (control['document_type'].dirty || control['document_type'].touched)}">
+                        <span
+                            *ngIf="control['document_type'].invalid &&(control['document_type'].dirty || control['document_type'].touched)"
+                            class="text-danger p-1"><small>Document-Type name is required.</small></span>
+                </div>
+                <div class="d-flex justify-content-center  gap-3 p-3">
+                    <button class="btn btn-dark  " (click)="onSubmit()">{{isEdit?'Update':'Add'}}</button>
+                    <button class="btn btn-light " (click)="closeDialog()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+

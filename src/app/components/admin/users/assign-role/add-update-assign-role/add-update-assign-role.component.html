@@ -1,0 +1,40 @@
+<section class="bg-theme-admin m-0 ">
+    <div class="row m-0">
+        <div class="col-md-12 d-flex justify-content-center">
+            <h4 class="header  text-dark pt-4">{{isEdit?'Update':'Add'}} Assign Role</h4>
+        </div>
+    </div>
+    <div class="row justify-content-center  m-0">
+        <div class="col-md-10 mb-3">
+            <form [formGroup]="form">
+                <div class="form-group col-md-12 ">
+                    <label for="user_id">User Name</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="user_id"  [ngClass]="{'is-invalid': control['user_id'].invalid && (control['user_id'].dirty || control['user_id'].touched)}">
+                        <option  value="" selected>Select User Name</option>
+                        <option selected [value]='item.user_id' *ngFor="let item of allUserList">{{item.user_name}}</option>  
+                      </select> 
+                        <span
+                            *ngIf="control['user_id'].invalid &&(control['user_id'].dirty || control['user_id'].touched)"
+                            class="text-danger p-1"><small>User name is required.</small></span>
+                </div>
+                <div class="form-group col-md-12 ">
+                    <label for="role_id">Role</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="role_id"  [ngClass]="{'is-invalid': control['role_id'].invalid && (control['role_id'].dirty || control['role_id'].touched)}">
+                        <option  value="" >Select Role</option>
+                        <option selected [value]='item.role_id' *ngFor="let item of allRoleList">{{item.role_name}}</option>  
+                      </select> 
+                        <span
+                            *ngIf="control['role_id'].invalid &&(control['role_id'].dirty || control['role_id'].touched)"
+                            class="text-danger p-1"><small>Role is required.</small></span>
+                </div>
+                <div class="d-flex justify-content-center  gap-3 p-3">
+                    <button class="btn btn-dark  " (click)="onSubmit()">{{isEdit?'Update':'Add'}}</button>
+                    <button class="btn btn-light " (click)="closeDialog()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+

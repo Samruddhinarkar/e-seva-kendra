@@ -1,0 +1,74 @@
+<section class="bg-theme-admin m-0 ">
+    <div class="row m-0">
+        <div class="col-md-12 d-flex justify-content-center">
+            <h4 class="header  text-dark pt-4">{{isEdit?'Update':'Add'}} user</h4>
+        </div>
+    </div>
+    <div class="row justify-content-center  m-0">
+        <div class="col-md-10 mb-3">
+            <form [formGroup]="form">
+                <div class="form-group col-md-12 ">
+                    <label for="user_name">Name</label>
+                    <input type="text" class="form-control" id="user_name
+                    " formControlName="user_name"
+                        [ngClass]="{'is-invalid': control['user_name'].invalid && (control['user_name'].dirty || control['user_name'].touched)}">
+                        <span
+                            *ngIf="control['user_name'].invalid &&(control['user_name'].dirty || control['user_name'].touched)"
+                            class="text-danger p-1"> User-name is required.</span>
+                </div>
+                <div class="form-group col-md-12 ">
+                    <label for="email_id">Email</label>
+                    <input type="text" class="form-control" id="email_id
+                    " formControlName="email_id"
+                        [ngClass]="{'is-invalid': control['email_id'].invalid && (control['email_id'].dirty || control['email_id'].touched)}">
+                        <span
+                            *ngIf="control['email_id'].invalid &&(control['email_id'].dirty || control['email_id'].touched)"
+                            class="text-danger ">
+                            <div *ngIf="control['email_id'].errors?.['required']">
+                                <small>Email Address is required</small>
+                              </div>
+                              <div *ngIf="control['email_id'].errors?.['email']">
+                                <small>Email must be a valid email address</small>
+                              </div>
+                        </span>
+                </div>
+                <div class="form-group col-md-12 ">
+                    <label for="designation_id">Designation</label>
+                    <!-- <input type="text" class="form-control" id="designation_id
+                    " formControlName="designation_id"
+                        [ngClass]="{'is-invalid': control['designation_id'].invalid && (control['designation_id'].dirty || control['designation_id'].touched)}"> -->
+                        <select class="form-select" aria-label="Default select example" formControlName="designation_id"  [ngClass]="{'is-invalid': control['designation_id'].invalid && (control['designation_id'].dirty || control['designation_id'].touched)}">
+                            <option  value="" selected>Select designation</option>
+                            <option selected [value]='item.designation_id'[(ngModel)]="searchDesignationValue"
+                            [ngModelOptions]="{ standalone: true }"*ngFor="let item of filteredDesignationArray"
+                            
+                            (input)="filterDesignation()" >{{item.designation_name}}</option>  
+                          </select> 
+
+                        <span
+                            *ngIf="control['designation_id'].invalid &&(control['designation_id'].dirty || control['designation_id'].touched)"
+                            class="text-danger p-1"><small> Designation is required.</small>
+                        
+                        </span>
+                </div>
+                <div class="form-group col-md-12" *ngIf="!isEdit">
+                    <label for="password">Password</label>
+                    <input type="text" class="form-control" id="password
+                    " formControlName="password"
+                        [ngClass]="{'is-invalid': control['password'].invalid && (control['password'].dirty || control['password'].touched)}">
+                        <span
+                            *ngIf="control['password'].invalid &&(control['password'].dirty || control['password'].touched)"
+                            class="text-danger p-1">Password is required.  
+                        </span>
+                </div>
+                <div class="d-flex justify-content-center  gap-3 p-3">
+                    <button class="btn btn-dark  " (click)="onSubmit()">{{isEdit?'Update':'Add'}}</button>
+                    <button class="btn btn-light " (click)="closeDialog()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+

@@ -1,0 +1,86 @@
+h6 {
+    overflow: hidden;
+    text-align: center;
+    font-size: 15px;
+    margin: 0px 60px 0px 60px;
+  }
+  
+  h6:before,
+  h6:after {
+    background-color: #3B4045;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+h6:before {
+    right: 0.5em;
+    margin-left: -50%;
+  }
+  
+  h6:after {
+    left: 0.5em;
+    margin-right: -50%;
+  }
+.btn-white{
+width: 60%;
+height: 34px;
+background: #FFFCF4;
+color:  #3B4045;
+border-radius: 4px;
+}
+#buttonDiv{
+  width: fit-content;
+}
+.ssJRIf, .K4efff {
+  font-smooth: auto!important;
+}
+.form-password{
+  position: relative;
+    display: flex;
+}
+.form-password input{
+  border-top-right-radius: 0px ;
+  border-bottom-right-radius: 0px;
+  border-right: none;
+}
+.form-password .form-control.is-invalid:focus{
+ box-shadow: none;
+}
+.form-password .form-control:focus{
+  box-shadow: none;
+ }
+.eye{
+  background-color: #FFFFFF;
+  border-top-right-radius:0.375rem;
+  border-bottom-right-radius:0.375rem;
+  display: flex;
+  align-items: center;
+  height: 35px;
+  padding: 0px 8px;
+  border: 1px solid #fcd458;
+  border-left: none;
+}
+.is-password-invalid{
+
+  border: 1px solid red;
+  border-left: none;
+  border-top-right-radius:0.375rem;
+  border-bottom-right-radius:0.375rem;
+}
+.btn-register {
+    background: #FBC108;
+
+}
+.login-bg{
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+}
+.btn-register {
+  margin: 10px 10px;
+  padding: 10px 30px;
+  background: #FCD96C;
+  border-radius: 100px;
+  border: none;
+}
